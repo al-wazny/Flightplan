@@ -1,0 +1,73 @@
+FlugzeugID,Flugzeugname,Erstinbetriebnahme,ModellName,ModellID,AnzSitzplaetze
+1,Frankfurt/Oder,1996-07-19,Airbus A319,1,124
+2,Wittenberg/Lutherstadt,1996-08-20,Airbus A319,1,124
+3,Rüsselsheim,1996-09-23,Airbus A319,1,124
+4,Dinkelsbühl,1996-10-25,Airbus A319,1,124
+5,Kelsterbach,1996-11-26,Airbus A319,1,124
+6,Trier,1996-12-10,Airbus A319,1,124
+7,Norderstedt,1997-01-27,Airbus A319,1,124
+8,Aschaffenburg,1997-05-05,Airbus A319,1,124
+9,Marburg,1997-06-13,Airbus A319,1,124
+10,Friedrichshafen,1997-07-10,Airbus A319,1,124
+11,Idar-Oberstein,1997-09-12,Airbus A319,1,124
+12,Tübingen,1997-08-27,Airbus A319,1,124
+13,Tegernsee,1997-09-19,Airbus A319,1,124
+14,Heide,1997-10-08,Airbus A319,1,124
+15,Straubing,1997-11-04,Airbus A319,1,124
+16,Verden,1997-11-12,Airbus A319,1,124
+17,Donaueschingen,1998-08-03,Airbus A319,1,124
+18,Fellbach,1998-07-28,Airbus A319,1,124
+19,Schweinfurt,1998-09-01,Airbus A319,1,124
+20,Aalen,2010-02-05,Airbus A319,1,124
+21,Siegburg,2010-06-11,Airbus A319,1,124
+22,Pirmasens,2010-10-08,Airbus A319,1,124
+23,Schönefeld,2010-11-22,Airbus A319,1,124
+24,Sinsheim,2011-08-17,Airbus A319,1,124
+25,Kirchheim unter Teck,2011-09-21,Airbus A319,1,124
+26,Saarbrücken,1990-02-20,Boing 733,8,140
+27,Xanten,1991-07-03,Boing 733,8,140
+28,Karlsruhe,1991-07-09,Boing 733,8,140
+29,Hagen,1991-07-12,Boing 733,8,140
+30,Ulm,1991-07-18,Boing 733,8,140
+31,Weiden i.d.Opf,1991-07-31,Boing 733,8,140
+32,Bad Kissingen,1991-08-15,Boing 733,8,140
+33,Bamberg,1991-11-07,Boing 733,8,140
+34,Wuppertal,1991-11-21,Boing 733,8,140
+35,Neubrandenburg,1992-01-16,Boing 733,8,140
+36,Goslar,1995-02-02,Boing 733,8,140
+37,Detmold,1995-03-23,Boing 733,8,140
+38,Seeheim-Jugenheim,1989-02-09,Boing 733,8,140
+39,Hanau,1989-10-24,Boing 733,8,140
+40,Bad Homburg v.d.Höhe,1989-10-24,Boing 733,8,140
+41,Hof,1990-01-11,Boing 733,8,140
+42,Bad Mergentheim,1990-01-25,Boing 733,8,140
+43,Frankfurt am Main,2010-05-19,Airbus A380,7,525
+44,München,2010-07-16,Airbus A380,7,525
+45,Peking,2010-08-25,Airbus A380,7,525
+46,Tokio,2010-11-16,Airbus A380,7,525
+47,Johannesburg,2011-03-06,Airbus A380,7,525
+48,Zürich,2011-04-04,Airbus A380,7,525
+49,Wien,2011-05-07,Airbus A380,7,525
+50,New York,2011-07-07,Airbus A380,7,525
+51,Berlin,2012-05-16,Airbus A380,7,525
+52,Brüssel,2012-06-15,Airbus A380,7,525
+53,Brandenburg,2012-04-25,Boing 748,12,400
+54,Sachsen,2012-07-01,Boing 748,12,400
+55,Mecklenburg-Vorpommern,2012-08-24,Boing 748,12,400
+56,Sachsen-Anhalt,2012-10-23,Boing 748,12,400
+57,EM-Flight 1,2013-05-17,Embraer ERJ190,13,98
+58,EM-Flight 2,2012-05-17,Embraer ERJ190,13,98
+59,Toronto,2003-04-17,De Havilland Canada DHC-8-400 Dash 8Q,16,40
+60,Montreal,2003-06-15,De Havilland Canada DHC-8-400 Dash 8Q,16,40
+null,null,null,Airbus A320,2,150
+null,null,null,Airbus A321,3,186
+null,null,null,Airbus A330,4,256
+null,null,null,Airbus A343,5,295
+null,null,null,Airbus A346,6,380
+null,null,null,Boing 735,9,110
+null,null,null,Boing 738,10,160
+null,null,null,Boing 744,11,390
+null,null,null,Saab 2000,14,58
+null,null,null,Bombardier CRJ700,15,75
+null,null,null,Embraer 170,17,78
+
