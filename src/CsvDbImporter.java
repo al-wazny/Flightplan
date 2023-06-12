@@ -1,4 +1,4 @@
-package src.FlightPlan;
+package src;
 
 import java.sql.*;
 
@@ -11,19 +11,23 @@ class CsvDbImporter {
     public static void main(String[] args) throws ClassNotFoundException, SQLException {
         
         try {
-            Class.forName("com.mysql.jdbc.Driver");  
+            Class.forName("com.mysql.cj.jdbc.Driver");  
     
             // Open a connection with MySQL server
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             Statement stmt = conn.createStatement();
 
-            ResultSet rs = stmt.executeQuery("SELECT * FROM test;");
+            // fetch all the entries inside of the table
+            ResultSet result = stmt.executeQuery("select * from test;");
 
-            while (rs.next()) {
-                System.out.println(rs.getString(0));
+            while (result.next()) {
+                // print out each row inside the 'name' column
+                System.out.println(result.getString("name"));
             }
         } catch (ClassNotFoundException e) {
-            System.out.println(e);
+            System.out.println("There's a missing class or dependecy: " + e);
+        } catch (SQLException e) {
+            System.out.println("There's an issue inside your SQL Statement: " + e);
         }
     }
 }
