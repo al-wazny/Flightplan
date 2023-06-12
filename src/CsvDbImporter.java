@@ -1,6 +1,11 @@
 package src;
 
 import java.sql.*;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Scanner;
 
 class CsvDbImporter {
 
@@ -8,7 +13,7 @@ class CsvDbImporter {
     final static String USER = "root";
     final static String PASSWORD = "";
     
-    public static void main(String[] args) throws ClassNotFoundException, SQLException {
+    public static void main(String[] args) throws ClassNotFoundException, SQLException, FileNotFoundException {
         
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");  
@@ -29,5 +34,26 @@ class CsvDbImporter {
         } catch (SQLException e) {
             System.out.println("There's an issue inside your SQL Statement: " + e);
         }
+
+        readCsvFile();
     }
+
+    // each line is in an own array / list
+    public static void readCsvFile() throws FileNotFoundException {
+        //parsing a CSV file into Scanner class constructor  
+        Scanner sc = new Scanner(new File("/home/ali/repos/Flugplan/flieger.csv"));  
+
+        List<List<String>> lines = new ArrayList();
+        String line;
+
+        while (sc.hasNext()) {  
+            line = sc.next();
+            List values = Arrays.asList(line);
+            lines.add(values);
+        }   
+        lines.forEach(l -> System.out.println(l));
+        sc.close();  //closes the scanner  
+    }  
+    
+    // TODO: create DB table using the CSV File
 }
