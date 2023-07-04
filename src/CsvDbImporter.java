@@ -12,7 +12,6 @@ class CsvDbImporter {
     final static String DB_URL = "jdbc:mysql://localhost:3306/FlightPlan";
     final static String USER = "root";
     final static String PASSWORD = "";
-    final static String TABLENAME = "Flugplan";
 
     Statement stmt;
     List<String> columnNames;
@@ -20,35 +19,30 @@ class CsvDbImporter {
     
     // TODO pass both csv files
     // each line is in an own array / list
-    public List<List<String>> readCsvFile(List<String> files) throws IOException {
-        List<List<String>> lines = new ArrayList<>();
+    public void readCsvFile(List<String> files) throws IOException, ClassNotFoundException, SQLException {
+        writeToDb();
+        
         String row = "";
-
         for (String file : files) {
             BufferedReader reader = new BufferedReader(new FileReader(file));
             columnNames = Arrays.asList(reader.readLine().split(","));
 
             while ((row = reader.readLine()) != null) {
                 List<String> values = Arrays.asList(row.split(","));
-                lines.add(values);
+                // check which column the current value belongs to and add it in here
+                createDbRow(values);
             }
         }
-        
-        return lines;
     }
     
-    public void writeToDb(List<List<String>> csvEntries) throws SQLException, ClassNotFoundException {
+    public void writeToDb() throws SQLException, ClassNotFoundException {
         createDbConnection();
-        // createDbTable();
         mapCsvToDbColumns();
-
-        for(int i = 0; i < csvEntries.size(); i++) {
-            createDbRow(csvEntries.get(i));
-        }
     }
 
     private void mapCsvToDbColumns() {
         // Flugplan Table
+        csvToTableMap.put("FlugID", "Flugplan.id");
         csvToTableMap.put("Flugname", "Flugplan.Flugname");
         csvToTableMap.put("EntfernungInMeilen", "Flugplan.EntfernungInMeilen");
         csvToTableMap.put("Startzeit", "Flugplan.Startzeit");
@@ -78,28 +72,33 @@ class CsvDbImporter {
             Connection conn = DriverManager.getConnection(DB_URL, USER, PASSWORD);
             
             stmt = conn.createStatement();
+            stmt.executeUpdate("INSERT INTO Flugzeugmodell (name, AnzSitzplaetze) VALUES ('blubber', '2341');");
         } catch (ClassNotFoundException e) {
-            System.out.println(e);
+            System.out.println("There's an issue with your Driver: "+e);
+        } catch (SQLException e) {
+            System.out.println("There's an issue with your SQL: "+e);
         }
     }
 
-    //TODO Check if the creation of the table is part of the programming task
-
-    // private void createDbTable() throws SQLException, NullPointerException {
-    //     String columns = String.join(" VARCHAR(255), ", columnNames);
-    //     String createTableQuery = "CREATE TABLE IF NOT EXISTS Flugplan (" + columns + " VARCHAR(255))";
-
-    //     try {
-    //         stmt.executeUpdate(createTableQuery);            
-    //     } catch (NullPointerException e) {
-    //         System.out.println(e + ": " + createTableQuery);
-    //     }
-    // }
-
     private void createDbRow(List<String> entry) throws SQLException {
-        // TODO check within the Hashmap which table and column the current csv column is associated to
-        String insert = "INSERT INTO "+ TABLENAME +" ("+ String.join(",", columnNames) +") VALUES ('"+ String.join("','", entry) +"');";
+        for (String columString : entry) {
+            int index = entry.indexOf(columString);
 
-        stmt.executeUpdate(insert);
+            String columnName = columnNames.get(index);
+            String columnMap = csvToTableMap.get(columnName);
+            
+            if (columnMap != null) {     
+                String[] dbTableAndColumn = csvToTableMap.get(columnName).split("\\.");
+    
+                String insert = "INSERT INTO "+ dbTableAndColumn[0] +" ("+ dbTableAndColumn[1] +") VALUES ('"+ columString +"');";
+                System.out.println(insert);
+    
+                try {
+                    stmt.executeUpdate(insert);
+                } catch (NullPointerException e) {
+                    // TODO: handle exception
+                }
+            }
+        }
     }
 }

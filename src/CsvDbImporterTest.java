@@ -12,9 +12,9 @@ public class CsvDbImporterTest {
         files.add("/home/ali/repos/Flugplan/flieger.csv");
 
         CsvDbImporter csvDbImporter = new CsvDbImporter();
-        List<List<String>> csvEntries = csvDbImporter.readCsvFile(files);
+        csvDbImporter.readCsvFile(files);
         
-        csvDbImporter.writeToDb(csvEntries);
+        // csvDbImporter.writeToDb(csvEntries);
     }
 
     //TOOD get first entrie from Flugplan Table
